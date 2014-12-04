@@ -1,16 +1,16 @@
-DROP TABLE TypeCompte;
-
-DROP TABLE Compte;
-
-DROP TABLE Agence;
-
-DROP TABLE Agent;
-
-DROP TABLE Client;
-
 DROP TABLE Appartient;
 
 DROP TABLE Operation;
+
+DROP TABLE Compte;
+
+DROP TABLE TypeCompte;
+
+DROP TABLE Client;
+
+DROP TABLE Agent;
+
+DROP TABLE Agence;
 
 CREATE TABLE TypeCompte (
 
