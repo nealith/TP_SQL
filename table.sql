@@ -20,7 +20,7 @@ CREATE TABLE TypeCompte (
 
 	libTypeCompte VARCHAR2(15)
 	CONSTRAINT ckLibTypeCompte
-	CHECK (UPPER(libTypeCompte LIKE 'COMPTE COURANT') OR UPPER(libTypeCompte LIKE 'COMPTE EPARGNE'))
+	CHECK (UPPER(libTypeCompte) LIKE 'COMPTE COURANT' OR UPPER(libTypeCompte) LIKE 'COMPTE EPARGNE')
 
 );
 
@@ -86,11 +86,11 @@ CREATE TABLE Client (
 	PRIMARY KEY,
 
 	nomClient VARCHAR2(15)
-	CONSTRAINT nnNom
+	CONSTRAINT nnClientNom
 	NOT NULL,
 
 	prenomClient VARCHAR2(15)
-	CONSTRAINT nnPrenom
+	CONSTRAINT nnClientPrenom
 	NOT NULL,
 
 	adresse VARCHAR2(15),
