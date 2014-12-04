@@ -35,7 +35,8 @@ CREATE TABLE Compte (
 
 	typeCompte NUMBER(1)
 	CONSTRAINT fkTypeCompte
-	FOREIGN KEY TypeCompte(numTypeCompte),
+	FOREIGN KEY 
+	REFERENCES TypeCompte(numTypeCompte),
 
 );	
 
@@ -69,7 +70,8 @@ CREATE TABLE Agent (
 
 	agence NUMBER(5)
 	CONSTRAINT fkAgence
-	FOREIGN KEY Agence(numAgence),
+	FOREIGN KEY 
+	REFERENCES Agence(numAgence),
 
 );
 
@@ -97,17 +99,26 @@ CREATE TABLE Client (
 
 	agence NUMBER(5)
 	CONSTRAINT fkAgence
-	FOREIGN KEY Agence(numAgence),
+	FOREIGN KEY 
+	REFERENCES Agence(numAgence),
 
 	agent NUMBER(5)
 	CONSTRAINT fkAgent
-	FOREIGN KEY Agent(numAgent),
+	FOREIGN KEY 
+	REFERENCES Agent(numAgent),
 );
 
 CREATE TABLE Appartient (
 
-	numClient NUMBER(5),	
-	numCompte NUMBER(5),
+	numClient NUMBER(5)
+	CONSTRAINT fkClient
+	FOREIGN KEY 
+	REFERENCES Client(numClient),
+
+	numCompte NUMBER(5)
+	CONSTRAINT fkCompte
+	FOREIGN KEY 
+	REFERENCES Compte(numCompte),	
 
 	CONSTRAINT pkAppartient
 	PRIMARY KEY (numClient,numCompte),
@@ -122,11 +133,13 @@ CREATE TABLE Operation (
 
 	numClient NUMBER(5)
 	CONSTRAINT fkClient
-	FOREIGN KEY Client(numClient),
+	FOREIGN KEY 
+	REFERENCES Client(numClient),
 
 	numCompte NUMBER(5)
 	CONSTRAINT fkCompte
-	FOREIGN KEY Compte(numCompte),	
+	FOREIGN KEY 
+	REFERENCES Compte(numCompte),	
 
 	dateOperation VARCHAR2(8),
 
