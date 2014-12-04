@@ -16,8 +16,7 @@ CREATE TABLE TypeCompte (
 
 	numTypeCompte NUMBER(1)
 	CONSTRAINT pkTypeCompte
-	PRIMARY KEY
-	AUTO_INCREMENT,
+	PRIMARY KEY,
 
 	libTypeCompte VARCHAR2(15)
 	CONSTRAINT ckLibTypeCompte
@@ -30,8 +29,7 @@ CREATE TABLE Compte (
 
 	numCompte NUMBER(5)
 	CONSTRAINT pkCompte
-	PRIMARY KEY
-	AUTO_INCREMENT,
+	PRIMARY KEY,
 
 	solde NUMBER(),
 
@@ -45,8 +43,7 @@ CREATE TABLE Agence (
 
 	numAgence NUMBER(5)
 	CONSTRAINT pkAgence
-	PRIMARY KEY
-	AUTO_INCREMENT,
+	PRIMARY KEY,
 
 	telAgence NUMBER(),
 
@@ -58,8 +55,7 @@ CREATE TABLE Agent (
 
 	numAgent NUMBER(5)
 	CONSTRAINT pkAgent
-	PRIMARY KEY
-	AUTO_INCREMENT,
+	PRIMARY KEY,
 
 	nomAgent VARCHAR2(15),
 
@@ -87,8 +83,7 @@ CREATE TABLE Client (
 
 	numClient NUMBER(5)
 	CONSTRAINT pkAgent
-	PRIMARY KEY
-	AUTO_INCREMENT,
+	PRIMARY KEY,
 
 	nomClient VARCHAR2(15)
 	CONSTRAINT nnNom
@@ -123,8 +118,7 @@ CREATE TABLE Operation (
 
 	numOperation NUMBER(5)
 	CONSTRAINT pkOperation
-	PRIMARY KEY
-	AUTO_INCREMENT,
+	PRIMARY KEY,
 
 	numClient NUMBER(5)
 	CONSTRAINT fkClient
