@@ -52,7 +52,7 @@ CREATE TABLE Agence (
 
 	directeur NUMBER(5)
 
-)
+);
 
 CREATE TABLE Agent (
 
@@ -75,7 +75,7 @@ CREATE TABLE Agent (
 	CONSTRAINT fkAgence
 	FOREIGN KEY Agence(numAgence)
 
-)
+);
 
 ALTER TABLE Agence
 	ADD CONSTRAINT fkDirecteur
@@ -107,7 +107,7 @@ CREATE TABLE Client (
 	agent NUMBER(5)
 	CONSTRAINT fkAgent
 	FOREIGN KEY Agent(numAgent)	
-)
+);
 
 CREATE TABLE Appartient (
 
@@ -117,13 +117,14 @@ CREATE TABLE Appartient (
 	CONSTRAINT pkAppartient
 	PRIMARY KEY (numClient,numCompte)
 
-)
+);
 
 CREATE TABLE Operation (
 
 	numOperation NUMBER(5)
 	CONSTRAINT pkOperation
-	PRIMARY KEY,
+	PRIMARY KEY
+	AUTO_INCREMENT,
 
 	numClient NUMBER(5)
 	CONSTRAINT fkClient
@@ -139,4 +140,4 @@ CREATE TABLE Operation (
 	CONSTRAINT ckMontant
 	CHECK (montant > 0),
 
-)			
+);			
