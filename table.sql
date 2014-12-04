@@ -20,7 +20,7 @@ CREATE TABLE TypeCompte (
 
 	libTypeCompte VARCHAR2(15)
 	CONSTRAINT ckLibTypeCompte
-	CHECK (UPPER(libTypeCompte LIKE "COMPTE COURANT") OR UPPER(libTypeCompte LIKE "COMPTE EPARGNE")),
+	CHECK (UPPER(libTypeCompte LIKE 'COMPTE COURANT') OR UPPER(libTypeCompte LIKE 'COMPTE EPARGNE')),
 
 );
 
@@ -31,7 +31,7 @@ CREATE TABLE Compte (
 	CONSTRAINT pkCompte
 	PRIMARY KEY,
 
-	solde NUMBER(),
+	solde NUMBER(38),
 
 	typeCompte NUMBER(1)
 	CONSTRAINT fkTypeCompte
@@ -45,7 +45,7 @@ CREATE TABLE Agence (
 	CONSTRAINT pkAgence
 	PRIMARY KEY,
 
-	telAgence NUMBER(),
+	telAgence VARCHAR2(15),
 
 	directeur NUMBER(5),
 
@@ -63,7 +63,7 @@ CREATE TABLE Agent (
 
 	adresse VARCHAR2(15),
 
-	salaire NUMBER(6)
+	salaire NUMBER(10)
 	CONSTRAINT ckSalaire
 	CHECK (salaire > 1000),
 
@@ -130,7 +130,7 @@ CREATE TABLE Operation (
 
 	dateOperation VARCHAR2(8),
 
-	montant NUMBER()
+	montant NUMBER(38)
 	CONSTRAINT ckMontant
 	CHECK (montant > 0),
 
