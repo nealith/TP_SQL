@@ -20,7 +20,7 @@ CREATE TABLE TypeCompte (
 
 	libTypeCompte VARCHAR2(15)
 	CONSTRAINT ckLibTypeCompte
-	CHECK (UPPER(libTypeCompte LIKE 'COMPTE COURANT') OR UPPER(libTypeCompte LIKE 'COMPTE EPARGNE')),
+	CHECK (UPPER(libTypeCompte LIKE 'COMPTE COURANT') OR UPPER(libTypeCompte LIKE 'COMPTE EPARGNE'))
 
 );
 
@@ -35,7 +35,7 @@ CREATE TABLE Compte (
 
 	typeCompte NUMBER(1)
 	CONSTRAINT fkTypeCompte
-	REFERENCES TypeCompte(numTypeCompte),
+	REFERENCES TypeCompte(numTypeCompte)
 
 );	
 
@@ -47,7 +47,7 @@ CREATE TABLE Agence (
 
 	telAgence VARCHAR2(15),
 
-	directeur NUMBER(5),
+	directeur NUMBER(5)
 
 );
 
@@ -69,7 +69,7 @@ CREATE TABLE Agent (
 
 	agence NUMBER(5)
 	CONSTRAINT fkAgence
-	REFERENCES Agence(numAgence),
+	REFERENCES Agence(numAgence)
 
 );
 
@@ -101,7 +101,7 @@ CREATE TABLE Client (
 
 	agent NUMBER(5)
 	CONSTRAINT fkAgent
-	REFERENCES Agent(numAgent),
+	REFERENCES Agent(numAgent)
 );
 
 CREATE TABLE Appartient (
@@ -115,7 +115,7 @@ CREATE TABLE Appartient (
 	REFERENCES Compte(numCompte),	
 
 	CONSTRAINT pkAppartient
-	PRIMARY KEY (numClient,numCompte),
+	PRIMARY KEY (numClient,numCompte)
 
 );
 
@@ -137,6 +137,6 @@ CREATE TABLE Operation (
 
 	montant NUMBER(38)
 	CONSTRAINT ckMontant
-	CHECK (montant > 0),
+	CHECK (montant > 0)
 
 );			
