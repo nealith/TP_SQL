@@ -166,7 +166,7 @@ BEFORE INSERT OR UPDATE ON Operation
 FOR EACH ROW
 WHEN (UPPER (new.typeOperation) = 'RETRAIT')
 DECLARE 
-	row numClient%TYPE;
+	row Appartient.numClient%TYPE;
 	CURSOR tmpCpt IS 
 		SELECT numClient
 		FROM Appartient
