@@ -156,9 +156,10 @@ BEGIN
 	WHERE Compte.numCompte = new.numCompte;
 	IF (new.montant > s)THEN
 		RAISE_APPLICATION_ERROR(-2001,'Solde insufisant');
-	ENDIF
-END	
+	END IF;
+END;	
+/
 
-SHOW ERROR;
+SHOW ERRORS;
 
 
