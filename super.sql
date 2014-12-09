@@ -146,8 +146,8 @@ CREATE TABLE Operation (
 
 CREATE OR REPLACE TRIGGER SafeRetrait
 BEFORE INSERT OR UPDATE ON Operation
-WHEN (UPPER (new.typeOperation) := "RETRAIT")
 FOR EACH ROW 
+WHEN (UPPER (new.typeOperation) := "RETRAIT")
 DECLARE
 	s NUMBER
 
