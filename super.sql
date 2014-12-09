@@ -158,6 +158,7 @@ BEGIN
 		RAISE_APPLICATION_ERROR(-2001,'Solde insufisant');
 	ENDIF
 END	
+
 SHOW ERROR;
 
 
