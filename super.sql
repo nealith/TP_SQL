@@ -144,7 +144,17 @@ CREATE TABLE Operation (
 
 );			
 
-#CREATE TRIGGER SafeRetrait
-#BEFORE INSERT OR UPDATE ON Operation
-#FOR EACH ROW 
-#WHEN (UPPER (new.typeOperation))
+CREATE TRIGGER SafeRetrait
+BEFORE INSERT OR UPDATE ON Operation
+FOR EACH ROW 
+DECLARE
+	s NUMBER
+WHEN (UPPER (new.typeOperation) = "RETRAIT")
+BEGIN 
+	SELECT solde INTO s
+	FROM Compte
+	WHERE Compte.numCompte = new.numCompte;
+	IF (new.montant > s)THEN
+		RAISE_APPLICATION_ERROR(-2001,'Solde insufisant');
+	ENDIF
+END	
