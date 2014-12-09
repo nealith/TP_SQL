@@ -146,10 +146,11 @@ CREATE TABLE Operation (
 
 CREATE OR REPLACE TRIGGER SafeRetrait
 BEFORE INSERT OR UPDATE ON Operation
+WHEN (UPPER (new.typeOperation) := "RETRAIT")
 FOR EACH ROW 
 DECLARE
 	s NUMBER
-WHEN (UPPER (new.typeOperation) = "RETRAIT")
+
 BEGIN 
 	SELECT solde INTO s
 	FROM Compte
