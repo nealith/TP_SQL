@@ -161,7 +161,7 @@ BEGIN
 END;	
 /
 
-CREATE TRIGGER RetraitBon
+CREATE OR REPLACE TRIGGER RetraitBon
 BEFORE INSERT OR UPDATE ON Operation
 FOR EACH ROW
 WHEN (UPPER (new.typeOperation) = 'RETRAIT')
@@ -174,7 +174,7 @@ DECLARE
 
 BEGIN 
 	OPEN tmpCpt;
-	FETCH tmpCpt INTO row
+	FETCH tmpCpt INTO row;
 	IF (tmpCpt%NOTFOUND) THEN
 		CLOSE tmpCpt;
 		RAISE_APPLICATION_ERROR(-20072,'erreur sac à merde');
