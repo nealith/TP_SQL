@@ -154,8 +154,8 @@ DECLARE
 BEGIN 
 	SELECT solde INTO s
 	FROM Compte
-	WHERE Compte.numCompte = new.numCompte;
-	IF (new.montant > s)THEN
+	WHERE Compte.numCompte = :new.numCompte;
+	IF (:new.montant > s)THEN
 		RAISE_APPLICATION_ERROR(-2001,'Solde insufisant');
 	END IF;
 END;	
