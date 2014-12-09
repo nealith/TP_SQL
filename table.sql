@@ -85,7 +85,7 @@ ALTER TABLE Agence
 CREATE TABLE Client (
 
 	numClient NUMBER(5)
-	CONSTRAINT pkAgent
+	CONSTRAINT pkClient
 	PRIMARY KEY,
 
 	nomClient VARCHAR2(15)
