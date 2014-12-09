@@ -98,10 +98,6 @@ CREATE TABLE Client (
 
 	adresse VARCHAR2(15),
 
-	agence NUMBER(5)
-	CONSTRAINT fkAgence
-	REFERENCES Agence(numAgence),
-
 	agent NUMBER(5)
 	CONSTRAINT fkAgent
 	REFERENCES Agent(numAgent)
