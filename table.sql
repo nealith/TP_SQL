@@ -1,3 +1,6 @@
+ALTER TABLE Agence
+	REMOVE CONSTRAINT fkDirecteur;
+
 DROP TABLE Appartient;
 
 DROP TABLE Operation;
