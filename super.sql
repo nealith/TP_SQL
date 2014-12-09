@@ -161,6 +161,26 @@ BEGIN
 END;	
 /
 
+CREATE TRIGGER RetraitBon
+BEFORE INSERT OR UPDATE ON Operation
+FOR EACH ROW
+WHEN (UPPER (new.typeOperation) = 'RETRAIT')
+DECLARE 
+	CURSOR tmpCpt IS 
+		SELECT numClient
+		FROM Appartient
+		WHERE :new.numCompte = Appartient.numCompte
+		AND :new.numClient = Appartient.numClient; 
+
+BEGIN 
+	OPEN tmpCpt;
+	FETCH tmpCpt INTO row
+	IF (tmpCpt%NOTFOUND) THEN
+		CLOSE tmpCpt;
+		RAISE_APPLICATION_ERROR(-20072,'erreur sac à merde');
+	END IF;
+	CLOSE tmpCpt;	
+END
+/
+
 SHOW ERRORS;
-
-
