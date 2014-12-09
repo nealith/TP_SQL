@@ -110,11 +110,11 @@ CREATE TABLE Client (
 CREATE TABLE Appartient (
 
 	numClient NUMBER(5)
-	CONSTRAINT fkClient
+	CONSTRAINT fkClientA
 	REFERENCES Client(numClient),
 
 	numCompte NUMBER(5)
-	CONSTRAINT fkCompte
+	CONSTRAINT fkCompteA
 	REFERENCES Compte(numCompte),	
 
 	CONSTRAINT pkAppartient
@@ -129,11 +129,11 @@ CREATE TABLE Operation (
 	PRIMARY KEY,
 
 	numClient NUMBER(5)
-	CONSTRAINT fkClient
+	CONSTRAINT fkClientO
 	REFERENCES Client(numClient),
 
 	numCompte NUMBER(5)
-	CONSTRAINT fkCompte
+	CONSTRAINT fkCompteO
 	REFERENCES Compte(numCompte),	
 
 	dateOperation VARCHAR2(8),
