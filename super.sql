@@ -189,7 +189,6 @@ BEFORE INSERT OR UPDATE OF salaire ON Agent
 FOR EACH ROW 
 
 DECLARE 
-
 	salaireMax NUMBER;
 	estBoss BOOLEAN;
 	salaireBoss NUMBER;
