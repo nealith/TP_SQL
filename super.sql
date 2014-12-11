@@ -242,6 +242,6 @@ BEGIN
 			RAISE_APPLICATION_ERROR(-20048,'Rappel directeur = boss , pas esclave ');
 		END IF;
 END
-
+/
 
 SHOW ERRORS;
