@@ -200,9 +200,9 @@ DECLARE
 
 BEGIN
 
-		OPEN tmpBoss
-		FETCH tmpBoss INTO var
-		estBoss := tmpBoss%FOUND
+		OPEN tmpBoss;
+		FETCH tmpBoss INTO var;
+		estBoss := tmpBoss%FOUND;
 		CLOSE tmpBoss;
 
 		IF (estBoss) THEN
@@ -213,18 +213,18 @@ BEGIN
 
 			IF (:new.Salaire <= salaireMax) THEN
 				RAISE_APPLICATION_ERROR(-20046,'Sous merde, apprends à coder');
-			ENDIF
+			ENDIF;
 		ELSE
 			SELECT Salaire INTO salaireBoss
 			FROM Agence, Agent
 			WHERE :new.numAgence = Agence.numAgence
 			AND Agent.numAgence = Agence.numAgence
-			AND Directeur = numAgent
+			AND Directeur = numAgent;
 			IF ( :new.salaire >= salaireBoss) THEN
 				RAISE_APPLICATION_ERROR(-20047,'Ta mère hier soir, a gagné plus que lui, grâce à moi');
-			ENDIF
+			ENDIF;
 			
-		ENDIF		
+		ENDIF;		
 
 END				
 /
