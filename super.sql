@@ -196,7 +196,7 @@ DECLARE
 	CURSOR tmpBoss IS 
 		SELECT DISTINCT Directeur
 		FROM Agence
-		WHERE :new.NumAgent = Directeur;
+		WHERE new.NumAgent = Directeur;
 
 BEGIN
 
@@ -217,7 +217,7 @@ BEGIN
 		ELSE
 			SELECT Salaire INTO salaireBoss
 			FROM Agence, Agent
-			WHERE :new.numAgence = Agence.numAgence
+			WHERE :new.agence = Agence.numAgence
 			AND Agent.numAgence = Agence.numAgence
 			AND Directeur = numAgent;
 			IF ( :new.salaire >= salaireBoss) THEN
