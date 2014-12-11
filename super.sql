@@ -194,7 +194,7 @@ DECLARE
 	CURSOR tmpBoss IS 
 		SELECT DISTINCT Directeur
 		FROM Agence
-		WHERE new.NumAgent = Directeur;
+		WHERE new.numAgent = Directeur;
 
 BEGIN
 
