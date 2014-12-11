@@ -191,7 +191,7 @@ DECLARE
 	salaireMax NUMBER;
 	estBoss BOOLEAN;
 	salaireBoss NUMBER;
-	var Agent%TYPE;
+	var Agent.numAgent%TYPE;
 	CURSOR tmpBoss IS 
 		SELECT DISTINCT Directeur
 		FROM Agence
