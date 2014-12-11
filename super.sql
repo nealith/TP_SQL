@@ -217,7 +217,7 @@ BEGIN
 			SELECT Salaire INTO salaireBoss
 			FROM Agence, Agent
 			WHERE :new.agence = Agence.numAgence
-			AND Agent.numAgence = Agence.numAgence
+			AND Agent.agence = Agence.numAgence
 			AND Directeur = numAgent;
 			IF ( :new.salaire >= salaireBoss) THEN
 				RAISE_APPLICATION_ERROR(-20047,'Ta mère hier soir, a gagné plus que lui, grâce à moi');
