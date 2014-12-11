@@ -190,9 +190,9 @@ FOREACH ROW
 
 DECLARE 
 
-	salaireMax NUMBER
-	estBoss BOOLEAN
-	salaireBoss NUMBER
+	salaireMax NUMBER;
+	estBoss BOOLEAN;
+	salaireBoss NUMBER;
 	CURSOR tmpBoss IS 
 		SELECT DISTINCT Directeur
 		FROM Agence
