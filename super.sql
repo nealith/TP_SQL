@@ -205,7 +205,7 @@ BEGIN
 		CLOSE tmpBoss;
 
 		IF (estBoss) THEN
-			SELECT MAX Salaire INTO salaireMax
+			SELECT MAX(Salaire) INTO salaireMax
 			FROM Agent , Agence
 			WHERE Directeur != :new.NumAgent
 			AND Agent.agence = Agence.numAgence;
