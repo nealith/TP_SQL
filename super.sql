@@ -254,7 +254,7 @@ CREATE OR REPLACE PROCEDURE transfer(numOperation NUMBER, idCompteD NUMBER, idCo
 IS
 BEGIN
 	SET TRANSACTION; 
-	LOCKTABLE Compte IN SHAREMODE;
+	LOCK TABLE Compte IN SHAREMODE;
 	UPDATE Compte
 	SET solde = (solde - montant)
 	WHERE numCompte = idCompteD;
@@ -262,7 +262,7 @@ BEGIN
 	SET solde = (solde + montant)
 	WHERE numCompte = idCompteC;
 
-	LOCKTABLE Operation IN SHAREMODE;
+	LOCK TABLE Operation IN SHAREMODE;
 	INSERT INTO Operation (numOperation, numCompte, numClient, type, montant, dateOperation)
 	VALUE (numOperation, idCompteD , client , 'RETRAIT' , montant , dateOperation);
 	INSERT INTO Operation (numOperation, numCompte, numClient, type, montant, dateOperation)
