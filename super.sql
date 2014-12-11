@@ -213,7 +213,7 @@ BEGIN
 
 			IF (:new.Salaire <= salaireMax) THEN
 				RAISE_APPLICATION_ERROR(-20046,'Sous merde, apprends à coder');
-			ENDIF;
+			END IF;
 		ELSE
 			SELECT Salaire INTO salaireBoss
 			FROM Agence, Agent
@@ -222,9 +222,9 @@ BEGIN
 			AND Directeur = numAgent;
 			IF ( :new.salaire >= salaireBoss) THEN
 				RAISE_APPLICATION_ERROR(-20047,'Ta mère hier soir, a gagné plus que lui, grâce à moi');
-			ENDIF;
+			END IF;
 			
-		ENDIF;		
+		END IF;		
 
 END				
 /
