@@ -226,7 +226,7 @@ BEGIN
 			
 		END IF;		
 
-END				
+END;				
 /
 
 SHOW ERRORS;
