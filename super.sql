@@ -238,7 +238,7 @@ BEGIN
 		SELECT MAX(Salaire) INTO salaireMax
 		FROM Agent , Agence
 		WHERE Agent.numAgent != :new.Directeur
-		AND Agent.agence = :new.agence;
+		AND Agent.agence = :new.numAgence;
 		SELECT salaire INTO salaireBoss
 		FROM Agent , Agence
 		WHERE :new.directeur = agent.numAgent;
