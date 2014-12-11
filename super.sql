@@ -233,12 +233,16 @@ BEFORE INSERT OR UPDATE OF Directeur ON Agence
 FOR EACH ROW
 DECLARE 
 	salaireMax NUMBER;
+	salaireBoss NUMBER;
 BEGIN
 		SELECT MAX(Salaire) INTO salaireMax
 		FROM Agent , Agence
 		WHERE Agent.numAgent != :new.Directeur
 		AND Agent.agence = :new.agence;
-		IF (:new.Salaire <= salaireMax) THEN
+		SELECT salaire INTO salaireBoss
+		FROM Agent , Agence
+		WHERE :new.directeur = agent.numAgent;
+		IF (salaireBoss <= salaireMax) THEN
 			RAISE_APPLICATION_ERROR(-20048,'Rappel directeur = boss , pas esclave ');
 		END IF;
 END;
