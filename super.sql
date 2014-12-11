@@ -248,4 +248,36 @@ BEGIN
 END;
 /
 
+SET AUTOCOMMIT OFF;
+
+CREATE OR REPLACE PROCEDURE transfer(numOperation NUMBER, idCompteD NUMBER, idCompteC NUMBER, montant NUMBER, client NUMBER, dateOperation VARCHAR2)
+IS
+BEGIN
+	SET TRANSACTION; 
+	LOCKTABLE Compte IN SHAREMODE;
+	UPDATE Compte
+	SET solde = (solde - montant)
+	WHERE numCompte = idCompteD;
+	UPDATE Compte
+	SET solde = (solde + montant)
+	WHERE numCompte = idCompteC;
+
+	LOCKTABLE Operation IN SHAREMODE;
+	INSERT INTO Operation (numOperation, numCompte, numClient, type, montant, dateOperation)
+	VALUE (numOperation, idCompteD , client , 'RETRAIT' , montant , dateOperation);
+	INSERT INTO Operation (numOperation, numCompte, numClient, type, montant, dateOperation)
+	VALUE (numOperation, idCompteC , client , 'CREDIT' , montant , dateOperation);	
+
+	COMMIT;
+
+	EXCEPTION 
+		WHEN DATANOTFOUND THEN
+			ROLLBACK;
+			DBMS OUTPUT.PUT.LINE('mirde....')
+		WHEN OTHER THEN
+			ROLLBACK;
+END;
+/				
+
+
 SHOW ERRORS;
