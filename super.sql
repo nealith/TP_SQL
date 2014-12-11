@@ -241,7 +241,7 @@ BEGIN
 		IF (:new.Salaire <= salaireMax) THEN
 			RAISE_APPLICATION_ERROR(-20048,'Rappel directeur = boss , pas esclave ');
 		END IF;
-END
+END;
 /
 
 SHOW ERRORS;
