@@ -208,7 +208,7 @@ BEGIN
 			SELECT MAX Salaire INTO salaireMax
 			FROM Agent , Agence
 			WHERE Directeur != :new.NumAgent
-			AND Agent.numAgence = Agence.numAgence;
+			AND Agent.agence = Agence.numAgence;
 
 			IF (:new.Salaire <= salaireMax) THEN
 				RAISE_APPLICATION_ERROR(-20046,'Sous merde, apprends à coder');
